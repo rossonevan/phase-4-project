@@ -26,7 +26,6 @@ function UserPage() {
 
     if(loading) return <h1>Loading...</h1>
     if(errors) return <h1>{errors}</h1>
-    console.log(user)
 
     return (
         <div>

@@ -1,7 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 
-function Navigation() {
+function Navigation({currentUser, updateUser}) {
+
+    const history = useHistory()
+   
+    const handleLogout = () => {
+        fetch('/logout', {method: 'DELETE'})
+        updateUser('')
+        history.push('/login')
+    }
+
 
     return (
         <div>
@@ -9,13 +18,16 @@ function Navigation() {
             TicketApprentice
             </NavLink>
             <br></br>
-            <NavLink exact to='/signup'>
-                Signup
-            </NavLink>
-            <br></br>
-            <NavLink exact to='/login'>
-                Login
-            </NavLink>
+            {currentUser ? <button onClick={handleLogout}>Log Out</button> :
+            <div> 
+                <NavLink exact to='/signup'>
+                    Signup
+                </NavLink>
+                <br></br>
+                <NavLink exact to='/login'>
+                    Login
+                </NavLink>
+            </div>}
         </div>
     )
 }

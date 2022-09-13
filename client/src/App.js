@@ -6,13 +6,21 @@ import SignUp from "./Components/SignUp";
 import Login from "./Components/Login";
 import UserPage from "./Components/UserPage";
 import Navigation from './Components/Navigation';
+import { useState } from 'react';
 
 
 function App() {
+
+  const [currentUser, setCurrentUser] = useState('')
+
+  const updateUser = (user) => setCurrentUser(user)
+
+
+
   return (
     <div className="App">
       <header className="App-header">
-      <Navigation />
+      <Navigation currentUser={currentUser} updateUser={updateUser}/>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -21,10 +29,10 @@ function App() {
           <EventDetail />
         </Route>
         <Route path="/signup">
-          <SignUp />
+          <SignUp updateUser={updateUser}/>
         </Route>
         <Route path="/login">
-          <Login />
+          <Login updateUser={updateUser}/>
         </Route>
         <Route path="/users/:id">
           <UserPage />

@@ -3,9 +3,9 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
-  # def current_user
-  #   @current_user ||= User.find(session[:user_id])
-  # end
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
 
   private
 
