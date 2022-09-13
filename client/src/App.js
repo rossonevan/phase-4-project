@@ -5,12 +5,14 @@ import EventDetail from "./Components/EventDetail";
 import SignUp from "./Components/SignUp";
 import Login from "./Components/Login";
 import UserPage from "./Components/UserPage";
+import Navigation from './Components/Navigation';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+      <Navigation />
       <Switch>
         <Route exact path="/">
           <Home />

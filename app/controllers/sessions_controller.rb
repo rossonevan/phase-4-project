@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     
-    def index
-        session[:]
-    end
+    # def create
+    #     user = User.find_by_username(params[:username])
+    # end
 end
