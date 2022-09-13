@@ -6,12 +6,16 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = find_user
-        render json: user, status: :ok
+        if current_user
+            render json: current_user, status: :ok
+        else
+            render json: {error: "No current session stored"}, status: :unauthroized
+        end
     end
 
     def create
         user = User.create(user_params)
+        session[:user_id] = user.id
         render json: user, status: :created
     end
 
@@ -34,7 +38,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:username, :password_digest)
+        params.permit(:username, :password)
     end
 
 end
