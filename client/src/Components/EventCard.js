@@ -6,10 +6,11 @@ function EventCard({event}) {
     return (
         <div>
                 <img src={event.image} alt={event.name} />
-                <Link to={`/events/${event.id}`}><h1>{event.name}</h1></Link>
+                <h1>{event.name}</h1>
                     <p>{event.date}</p>
                     <p>{event.location}  {event.time}</p>
                 <h4>Price: ${event.price}</h4>
+                <Link to={`/events/${event.id}`}><button>See More Info</button></Link>
 
         </div>
     )

@@ -32,7 +32,12 @@ function UserPage() {
             <h1>{user.username}</h1>
             <h3>Tickets</h3>
             <ul>
-                {/* tickets here */}
+                {user.events.map(event => (
+                    <li>
+                        <h2>{event.name}</h2>
+                        <p>Price: {event.price}</p>
+                    </li>
+                ))}
             </ul>
         </div>
     )

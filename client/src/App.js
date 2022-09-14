@@ -34,7 +34,7 @@ function App() {
         <Route path="/login">
           <Login updateUser={updateUser}/>
         </Route>
-        <Route path="/users/:id">
+        <Route path="/me">
           <UserPage />
         </Route>
       </Switch>

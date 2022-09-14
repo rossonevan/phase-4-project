@@ -41,7 +41,8 @@ function EventDetail() {
             <img src={image} alt={name} />
             <div>
                 <h3>Location: {location}</h3>
-                <p>{date}{time}</p>
+                <p>{date}</p>
+                <p>{time}</p>
                 <p>{price}</p>
             </div>
             <button>Add ticket</button>

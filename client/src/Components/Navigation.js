@@ -18,16 +18,22 @@ function Navigation({currentUser, updateUser}) {
             TicketApprentice
             </NavLink>
             <br></br>
-            {currentUser ? <button onClick={handleLogout}>Log Out</button> :
-            <div> 
-                <NavLink exact to='/signup'>
-                    Signup
-                </NavLink>
-                <br></br>
-                <NavLink exact to='/login'>
-                    Login
-                </NavLink>
-            </div>}
+            {currentUser ? 
+                <div>
+                    <h1>Welcome {updateUser.name}</h1>
+                    <button onClick={handleLogout}>Log Out</button> 
+                </div>
+                    :
+                <div> 
+                    <NavLink exact to='/signup'>
+                        Signup
+                    </NavLink>
+                    <br></br>
+                    <NavLink exact to='/login'>
+                        Login
+                    </NavLink>
+                </div>
+                }
         </div>
     )
 }
