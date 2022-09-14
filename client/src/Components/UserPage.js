@@ -15,11 +15,6 @@ function UserPage({updateUser, currentUser}) {
             .then(updateUser())
     }
 
-    const removeTicket = (id) => {
-        fetch(`/tickets/${id}`, {method: 'DELETE'})
-        .then(getTickets())
-    }
-
     const getTickets = () => {
         fetch(`/me`)
         .then(res => {
@@ -39,16 +34,24 @@ function UserPage({updateUser, currentUser}) {
         getTickets()
     }, [])
 
+    const removeTicket = (id) => {
+        fetch(`/tickets/${id}`, {method: 'DELETE'})
+        .then(getTickets())
+    }
+
     if(loading) return <h1>Loading...</h1>
     if(errors) return <h1>{errors}</h1>
+
+    console.log(currentUser.tickets)
 
     return (
         <div>
             <h3>My Tickets</h3>
             <ul>
-                {tickets.map(ticket => {
+                {currentUser.tickets.map(ticket => {
                     return (
                         <div>
+                            {console.log(ticket.event)}
                             {/* <h2>{.name}</h2>
                             <p>Price: {event.price}</p> */}
                             <button onClick={() => {removeTicket(ticket.id)}}>Remove</button>
