@@ -4,7 +4,6 @@ import { useHistory, Link} from "react-router-dom";
 function UserPage({updateUser, currentUser}) {
     const [loading, setLoading] = useState(true)
     const [errors, setErrors] = useState(false)
-    const [tickets, setTickets] = useState([])
 
     const history = useHistory()
 
@@ -22,7 +21,6 @@ function UserPage({updateUser, currentUser}) {
                 res.json().then(user => {
                     updateUser(user)
                     setLoading(false)
-                    setTickets(currentUser.tickets)
                 })
             } else {
                 res.json().then(data => setErrors(data.error))
@@ -49,8 +47,7 @@ function UserPage({updateUser, currentUser}) {
                 {currentUser.tickets.map(ticket => {
                     return (
                         <div>
-                            <h1>Ticket</h1>
-                            <h2>{ticket.event.name}</h2>
+                            <h3>{ticket.event.name}</h3>
                             <p>Price: {ticket.event.price}</p>
                             <img src={ticket.event.image} alt={ticket.event.name}/>
                             <button onClick={() => {removeTicket(ticket.id)}}>Remove Ticket</button>

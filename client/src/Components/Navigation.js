@@ -34,6 +34,9 @@ function Navigation({currentUser, updateUser}) {
                 <div>
                     <h3>Welcome {currentUser.username}</h3>
                     <NavLink exact to='/me'>My Inventory</NavLink>
+                    <NavLink exact to='/createEvent'>
+                        Create New Event
+                    </NavLink>
                     <button onClick={handleLogout}>Log Out</button> 
                 </div>
                     :

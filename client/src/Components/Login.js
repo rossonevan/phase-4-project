@@ -34,7 +34,7 @@ function Login({updateUser}) {
                     updateUser(user)
                     history.push(`/me`)
                 })
-            }else {
+            } else {
                 res.json().then(json => setErrors(Object.entries(json.errors)))
             }
         })

@@ -6,8 +6,9 @@ import SignUp from "./Components/SignUp";
 import Login from "./Components/Login";
 import UserPage from "./Components/UserPage";
 import Navigation from './Components/Navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import EditUserForm from "./Components/EditUserForm";
+import EventForm from "./Components/EventForm"
 
 function App() {
 
@@ -15,6 +16,25 @@ function App() {
 
   const updateUser = (user) => setCurrentUser(user)
 
+  const [eventData, setEventData] = useState([]);
+  const [errors, setErrors] = useState(false);
+
+  useEffect(() => {
+      fetch('/events')
+          .then(res => {
+              if(res.ok){
+                  res.json().then(setEventData)
+              }else {
+                  res.json().then(data => setErrors(data.error))
+              }
+          })
+  }, [])
+
+  const addEvent = (event) => {
+    setEventData(old => [...old, event])
+  }
+
+  if(errors) return <h1>{errors}</h1>
 
   return (
     <div className="App">
@@ -22,7 +42,7 @@ function App() {
       <Navigation currentUser={currentUser} updateUser={updateUser}/>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home eventData={eventData}/>
         </Route>
         <Route path="/events/:id">
           <EventDetail currentUser={currentUser}/>
@@ -38,6 +58,9 @@ function App() {
         </Route>
         <Route exact path="/editUser">
           <EditUserForm currentUser={currentUser} updateUser={updateUser}/>
+        </Route>
+        <Route exact path="/createEvent">
+          <EventForm addEvent={addEvent}/>
         </Route>
       </Switch>
     </header>

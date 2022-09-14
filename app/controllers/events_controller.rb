@@ -10,5 +10,15 @@ class EventsController < ApplicationController
         render json: event, status: :ok
     end
 
+    def create
+        event = Event.create!(event_params)
+        render json: event, status: :created
+    end
+
+    private
+
+    def event_params
+        params.permit(:name, :image, :price, :date, :location, :time)
+    end
 
 end
