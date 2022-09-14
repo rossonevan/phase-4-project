@@ -42,28 +42,18 @@ function UserPage({updateUser, currentUser}) {
     if(loading) return <h1>Loading...</h1>
     if(errors) return <h1>{errors}</h1>
 
-    console.log(currentUser.tickets[0])
-
     return (
         <div>
             <h3>My Tickets</h3>
             <ul>
-                {currentUser.events.map(event => {
-                    return (
-                    <div>
-                    <h2>{event.name}</h2>
-                    <p>Price: {event.price}</p>
-                    </div>
-                    )}
-                )}
                 {currentUser.tickets.map(ticket => {
                     return (
                         <div>
-                            {console.log(ticket.event)}
-                            {/* <h2>{.name}</h2>
-                            <p>Price: {event.price}</p> */}
-                            <button onClick={() => {removeTicket(ticket.id)}}>Remove</button>
-                            {/* <img src={event.image} alt={event} /> */}
+                            <h1>Ticket</h1>
+                            <h2>{ticket.event.name}</h2>
+                            <p>Price: {ticket.event.price}</p>
+                            <img src={ticket.event.image} alt={ticket.event.name}/>
+                            <button onClick={() => {removeTicket(ticket.id)}}>Remove Ticket</button>
                         </div>
                     )
                 })
