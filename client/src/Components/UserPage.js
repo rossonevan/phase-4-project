@@ -42,12 +42,20 @@ function UserPage({updateUser, currentUser}) {
     if(loading) return <h1>Loading...</h1>
     if(errors) return <h1>{errors}</h1>
 
-    console.log(currentUser.tickets)
+    console.log(currentUser.tickets[0])
 
     return (
         <div>
             <h3>My Tickets</h3>
             <ul>
+                {currentUser.events.map(event => {
+                    return (
+                    <div>
+                    <h2>{event.name}</h2>
+                    <p>Price: {event.price}</p>
+                    </div>
+                    )}
+                )}
                 {currentUser.tickets.map(ticket => {
                     return (
                         <div>
