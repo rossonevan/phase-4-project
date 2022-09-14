@@ -23,9 +23,7 @@ function Login({updateUser}) {
 
         fetch('/login',{
             method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
+            headers: {'Content-type': 'application/json'},
             body:JSON.stringify(user)
         })
         .then(res => {
@@ -34,8 +32,8 @@ function Login({updateUser}) {
                     updateUser(user)
                     history.push(`/me`)
                 })
-            } else {
-                res.json().then(json => setErrors(Object.entries(json.errors)))
+            }else {
+                res.json().then(json => setErrors(json.errors))
             }
         })
     } 
@@ -58,6 +56,7 @@ function Login({updateUser}) {
                 <br></br>
                 <input type="submit" value='Log in!' />
             </form>
+            {errors? <div>{errors}</div>:null}
         </div>
     )
 }

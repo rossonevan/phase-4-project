@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+    # skip_before_action :authenticate_user, except: :create
 
     def index 
         events = Event.all
