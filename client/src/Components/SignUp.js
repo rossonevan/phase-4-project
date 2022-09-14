@@ -31,7 +31,7 @@ function SignUp({updateUser}) {
             if(res.ok){
                 res.json().then(user => {
                     updateUser(user)
-                    history.push(`/users/${user.id}`)
+                    history.push(`/me`)
                 })
             }else {
                 res.json().then(json => setErrors(Object.entries(json.errors)))
@@ -47,11 +47,11 @@ function SignUp({updateUser}) {
     return (
         <div>
             <form onSubmit={onSubmit}>
-                <label>Username:</label>
+                <label>Create Username:</label>
                 <br></br>
                 <input type='text' name='username' required onChange={handleChange}/>
                 <br></br>
-                <label>Password:</label>
+                <label>Create Password:</label>
                 <br></br>
                 <input type='password' name='password' required onChange={handleChange}/>
                 <br></br>

@@ -1,4 +1,5 @@
 import { NavLink, useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 
 function Navigation({currentUser, updateUser}) {
@@ -11,6 +12,17 @@ function Navigation({currentUser, updateUser}) {
         history.push('/login')
     }
 
+    useEffect(() => {
+        fetch('/me').then((res) => {
+          if (res.ok) {
+            res.json().then((user) => {
+              updateUser(user);
+              console.log(user)
+            });
+          }
+        });
+      }, []);
+
 
     return (
         <div>
@@ -20,7 +32,8 @@ function Navigation({currentUser, updateUser}) {
             <br></br>
             {currentUser ? 
                 <div>
-                    <h1>Welcome {updateUser.name}</h1>
+                    <h3>Welcome {currentUser.username}</h3>
+                    <NavLink exact to='/me'>My Inventory</NavLink>
                     <button onClick={handleLogout}>Log Out</button> 
                 </div>
                     :

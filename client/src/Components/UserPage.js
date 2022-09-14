@@ -1,21 +1,29 @@
 import {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import { useHistory, Link} from "react-router-dom";
 
-function UserPage() {
-
-    const [user, setUser] = useState()
+function UserPage({updateUser, currentUser}) {
     const [loading, setLoading] = useState(true)
     const [errors, setErrors] = useState(false)
 
-    const params = useParams()
-    const {id} = params
+    const history = useHistory()
+
+    const deleteUser = () => {
+        history.push('/')
+        fetch(`/users/${currentUser.id}`, {method: 'DELETE'})
+            .then(fetch('/logout', {method: 'DELETE'}))
+            .then(updateUser())
+    }
+
+    const removeTicket = () => {
+        fetch(`/tickets/`, {method: 'DELETE'})
+    }
 
     useEffect(() => {
-        fetch(`/users/${id}`)
+        fetch(`/me`)
         .then(res => {
             if(res.ok){
                 res.json().then(user => {
-                    setUser(user)
+                    updateUser(user)
                     setLoading(false)
                 })
             } else {
@@ -29,16 +37,20 @@ function UserPage() {
 
     return (
         <div>
-            <h1>{user.username}</h1>
-            <h3>Tickets</h3>
+            <h3>My Tickets</h3>
             <ul>
-                {user.events.map(event => (
-                    <li>
+                {currentUser.events.map(event => (
+                    <div>
                         <h2>{event.name}</h2>
                         <p>Price: {event.price}</p>
-                    </li>
+                        <button onClick={removeTicket}>Remove</button>
+                        <img src={event.image} alt={event.name} />
+                        
+                    </div>
                 ))}
             </ul>
+            <Link to='/editUser'>Edit Account</Link>
+            <button onClick={deleteUser}>Delete Account</button>
         </div>
     )
 }

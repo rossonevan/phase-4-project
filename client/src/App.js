@@ -7,14 +7,13 @@ import Login from "./Components/Login";
 import UserPage from "./Components/UserPage";
 import Navigation from './Components/Navigation';
 import { useState } from 'react';
-
+import EditUserForm from "./Components/EditUserForm";
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState('')
 
   const updateUser = (user) => setCurrentUser(user)
-
 
 
   return (
@@ -26,7 +25,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/events/:id">
-          <EventDetail />
+          <EventDetail currentUser={currentUser}/>
         </Route>
         <Route path="/signup">
           <SignUp updateUser={updateUser}/>
@@ -35,7 +34,10 @@ function App() {
           <Login updateUser={updateUser}/>
         </Route>
         <Route path="/me">
-          <UserPage />
+          <UserPage currentUser={currentUser} updateUser={updateUser}/>
+        </Route>
+        <Route exact path="/editUser">
+          <EditUserForm currentUser={currentUser} updateUser={updateUser}/>
         </Route>
       </Switch>
     </header>

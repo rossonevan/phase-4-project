@@ -1,22 +1,22 @@
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 
-function EventDetail() {
+function EventDetail({currentUser}) {
 
     const [event, setEvents] = useState({})
     const [loading, setLoading] = useState(true)
     const [errors, setErrors] = useState(false)
 
     const params = useParams()
+    const history = useHistory()
 
     useEffect(() => {
         //GET to '/events/:id`
         fetch(`/events/${params.id}`)
         .then(res => {
             if(res.ok){
-                console.log('okay')
+
                 res.json().then(data => {
-                    console.log(data)
                     setEvents(data)
                     setLoading(false)
                 })
@@ -25,15 +25,28 @@ function EventDetail() {
                 res.json().then(data => setErrors(data.error))
             }
         })
-    }, [])
-
-
-
+    }, [params.id])
 
     if(loading) return <h1>Loading...</h1>
     if(errors) return <h1>{errors}</h1>
 
     const {id, name, location, date, time, image, price} = event
+    const userId = currentUser.id
+
+    const addTicket = () => {
+        fetch(`/tickets`, {
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({user_id: userId, event_id:id})
+        }).then(res => {
+            if(res.ok){
+              history.push('/me')
+            } else {
+              res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+            }
+          })
+
+    }
 
     return (
         <div>
@@ -45,7 +58,7 @@ function EventDetail() {
                 <p>{time}</p>
                 <p>{price}</p>
             </div>
-            <button>Add ticket</button>
+            <button onClick={addTicket}>Add ticket</button>
         </div>
     )
 }
