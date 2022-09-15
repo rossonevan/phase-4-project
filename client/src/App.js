@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import { Switch, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import EventDetail from "./Components/EventDetail";

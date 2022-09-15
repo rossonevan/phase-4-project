@@ -26,7 +26,7 @@ function Navigation({currentUser, updateUser}) {
 
     return (
         <div className="nav">
-            <NavLink className="Logo NavLink" exact to='/'>
+            <NavLink className="text-3xl font-bold underline" exact to='/'>
             TicketApprentice
             </NavLink>
             {currentUser ? 

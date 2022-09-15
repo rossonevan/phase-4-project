@@ -1,4 +1,4 @@
-body, html {
+/* body, html {
   background:linear-gradient(0deg, rgb(7, 2, 94) 0%, rgba(9,9,121,1) 35%, rgb(7, 80, 175) 100%);
   font-size: calc(10px + 2vmin);
   color: white;
@@ -70,4 +70,4 @@ body, html {
 .active {
   background-color: rgb(255, 255, 255);
   color:rgb(7, 80, 175)
-}
+} */
