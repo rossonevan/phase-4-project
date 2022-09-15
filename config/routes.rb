@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :events
-  resources :users
-  resources :tickets
+  resources :users, except: [:index]
+  resources :tickets, except: [:index]
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

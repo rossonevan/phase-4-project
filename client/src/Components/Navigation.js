@@ -39,7 +39,7 @@ function Navigation({currentUser, updateUser}) {
                             <button onClick={handleLogout}>Log Out</button> 
                         </div> :
                         <div class="items-center justify-end flex-1 hidden space-x-4 sm:flex">
-                            <NavLink className="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:text-blue-500 hover:bg-gray-200 py-1 px-3" exact to='/signup'>Signup</NavLink>
+                            <NavLink className="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:text-blue-500 hover:bg-gray-200 py-1 px-3" exact to='/signup'>Sign up!</NavLink>
                             <NavLink className="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:text-blue-500 hover:bg-gray-200 py-1 px-3" exact to='/login'>Login</NavLink>
                         </div>}
                 </div>

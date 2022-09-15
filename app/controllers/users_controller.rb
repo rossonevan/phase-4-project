@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
-    # skip_before_action :authenticate_user, only: :create, :show
-    
-    def index
-        users = User.all
-        render json: users, status: :ok
-    end
+    skip_before_action :authenticate_user, only: :create
 
     def show
         if current_user
