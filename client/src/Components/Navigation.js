@@ -25,31 +25,26 @@ function Navigation({currentUser, updateUser}) {
 
 
     return (
-        <div className="nav">
-            <NavLink className="text-3xl font-bold underline" exact to='/'>
-            TicketApprentice
-            </NavLink>
-            {currentUser ? 
-                <div>
-                    <h3>Welcome {currentUser.username}</h3>
-                    <NavLink className="NavLink" exact to='/me'>My Inventory</NavLink>
-                    <NavLink className="NavLink" exact to='/createEvent'>
-                        Create New Event
-                    </NavLink>
-                    <button onClick={handleLogout}>Log Out</button> 
+        <header className="shadow-sm">
+            <div class="p-4 mx-auto max-w-screen-xl">
+                <div class="flex items-center justify-between space-x-4 lg:space-x-10">
+                    <div class="flex lg:w-0 lg:flex-1">
+                        <NavLink className="text-4xl font-bold text-center text-blue-500 font-style italic" exact to='/'>ticketapprentice</NavLink>
+                    </div>
+                        {currentUser ? 
+                        <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
+                            <h3>Welcome, {currentUser.username}</h3>
+                            <NavLink className="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:text-blue-500 hover:bg-gray-200 py-1 px-3" exact to='/me'>My Inventory</NavLink>
+                            <NavLink className="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:text-blue-500 hover:bg-gray-200 py-1 px-3" exact to='/createEvent'>Create New Event</NavLink>
+                            <button onClick={handleLogout}>Log Out</button> 
+                        </div> :
+                        <div class="items-center justify-end flex-1 hidden space-x-4 sm:flex">
+                            <NavLink className="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:text-blue-500 hover:bg-gray-200 py-1 px-3" exact to='/signup'>Signup</NavLink>
+                            <NavLink className="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:text-blue-500 hover:bg-gray-200 py-1 px-3" exact to='/login'>Login</NavLink>
+                        </div>}
                 </div>
-                    :
-                <div> 
-                    <NavLink className="NavLink" exact to='/signup'>
-                        Signup
-                    </NavLink>
-                    <NavLink className="NavLink"
-                    exact to='/login'>
-                        Login
-                    </NavLink>
-                </div>
-                }
-        </div>
+            </div>
+        </header>
     )
 }
 
