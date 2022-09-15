@@ -1,4 +1,4 @@
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, Link } from "react-router-dom";
 import { useEffect } from "react";
 
 
@@ -29,7 +29,7 @@ function Navigation({currentUser, updateUser}) {
             <div class="p-4 mx-auto max-w-screen-xl">
                 <div class="flex items-center justify-between space-x-4 lg:space-x-10">
                     <div class="flex lg:w-0 lg:flex-1">
-                        <NavLink className="text-4xl font-bold text-center text-blue-500 font-style italic" exact to='/'>ticketapprentice</NavLink>
+                        <Link className="text-4xl font-bold text-center text-blue-500 font-style italic" exact to='/'>ticketapprentice</Link>
                     </div>
                         {currentUser ? 
                         <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
