@@ -46,23 +46,39 @@ function EditUserForm({currentUser, updateUser}) {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <label>New Username:</label>
-                <br></br>
-                <input type='text' name='username' required onChange={handleChange}/>
-                <br></br>
-                <label>New Password:</label>
-                <br></br>
-                <input type='password' name='password' required onChange={handleChange}/>
-                <br></br>
-                <label>Confirm Password:</label>
-                <br></br>
-                <input type='password' name='passwordC' required onChange={handleChange}/>
-                <br></br>
-                <button type="submit">Confirm</button>
-            </form>
-        </div>
+        <section className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+            <div className="max-w-lg mx-auto">
+                    <form onSubmit={onSubmit} className="p-8 mt-6 mb-0 rounded-lg shadow-2xl space-y-4 bg-white">
+                        <p class="text-lg font-medium text-center">Edit your account</p>
+                        <div>
+                            <label htmlFor="username" className="text-sm font-medium">New Username</label>
+
+                            <div class="relative mt-1">     
+                                <input type='text' name='username' className="w-full p-4 pr-12 text-sm border-gray-200 border-2 rounded-lg shadow-sm"
+                                placeholder="Enter Username"required onChange={handleChange}/>
+                            </div>
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="text-sm font-medium">New Password</label>
+                
+                            <div class="relative mt-1">
+                                <input type='password' name='password' className="w-full p-4 pr-12 text-sm border-gray-200 border-2 rounded-lg shadow-sm" 
+                                placeholder="Enter Password" required onChange={handleChange} />
+                            </div>
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="text-sm font-medium">Confirm New Password</label>
+                
+                            <div class="relative mt-1">
+                                <input type='password' name='passwordC' className="w-full p-4 pr-12 text-sm border-gray-200 border-2 rounded-lg shadow-sm" 
+                                placeholder="Confirm Password" required onChange={handleChange} />
+                            </div>
+                        </div>
+                            
+                        <button type="submit"  class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg">Edit</button>
+                    </form>
+                </div>
+        </section>
     )
 }
 

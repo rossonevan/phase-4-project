@@ -48,17 +48,32 @@ function EventDetail({currentUser}) {
     }
 
     return (
-        <div>
-            <h1>{name}</h1>
-            <img src={image} alt={name} />
-            <div>
-                <h3>Location: {location}</h3>
-                <p>{date}</p>
-                <p>{time}</p>
-                <p>{price}</p>
+        <section>
+            <div className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+                <div className="max-w-lg mx-auto">
+                    <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
+
+                        <div className="aspect-w-1 aspect-h-1">
+                            <img src={image} alt={name} className="h-full w-full object-cover rounded-xl"/>
+                        </div>
+
+                        <div className="sticky top-0">
+                            <div className="flex justify-between mt-8">
+                                <div className="max-w-[35ch]">
+                                    <h1 className="text-2xl font-bold">{name}</h1>
+                                    <div>
+                                        <h3 className="mt-0.5 text-sm">Location: {location}</h3>
+                                        <p className="text-1xl font-bold">{date} • {time}</p>
+                                    </div>
+                                </div>
+                                <p className="text-lg font-bold">${price}</p>
+                            </div>
+                        </div>
+                            <button onClick={addTicket} className="block w-full px-5 py-3 text-sm font-medium text-blue-500 bg-white rounded-lg">Add ticket</button>
+                    </div>
+                </div>
             </div>
-            <button onClick={addTicket}>Add ticket</button>
-        </div>
+        </section>
     )
 }
 
