@@ -37,7 +37,7 @@ function App() {
   if(errors) return <h1>{errors}</h1>
 
   return (
-    <div className="bg-[height:200px_100px] bg-gradient-to-r from-sky-500 to-indigo-500">
+    <div className="bg-gradient-to-b from-sky-500 to-indigo-500 h-full">
       <header className="bg-white">
         <Navigation currentUser={currentUser} 
         updateUser={updateUser}/>

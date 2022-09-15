@@ -11,7 +11,6 @@ function EventDetail({currentUser}) {
     const history = useHistory()
 
     useEffect(() => {
-        //GET to '/events/:id`
         fetch(`/events/${params.id}`)
         .then(res => {
             if(res.ok){
