@@ -37,8 +37,8 @@ function App() {
   if(errors) return <h1>{errors}</h1>
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="h-screen bg-blue-500 bg-cover">
+      <header className="bg-white">
         <Navigation currentUser={currentUser} 
         updateUser={updateUser}/>
       </header>
