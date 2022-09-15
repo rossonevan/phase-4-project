@@ -26,26 +26,25 @@ function Navigation({currentUser, updateUser}) {
 
     return (
         <div>
-            <NavLink exact to='/'>
+            <NavLink className="Logo" exact to='/'>
             TicketApprentice
             </NavLink>
-            <br></br>
             {currentUser ? 
                 <div>
                     <h3>Welcome {currentUser.username}</h3>
-                    <NavLink exact to='/me'>My Inventory</NavLink>
-                    <NavLink exact to='/createEvent'>
+                    <NavLink className="NavLink" exact to='/me'>My Inventory</NavLink>
+                    <NavLink className="NavLink" exact to='/createEvent'>
                         Create New Event
                     </NavLink>
                     <button onClick={handleLogout}>Log Out</button> 
                 </div>
                     :
                 <div> 
-                    <NavLink exact to='/signup'>
+                    <NavLink className="NavLink" exact to='/signup'>
                         Signup
                     </NavLink>
-                    <br></br>
-                    <NavLink exact to='/login'>
+                    <NavLink className="NavLink"
+                    exact to='/login'>
                         Login
                     </NavLink>
                 </div>

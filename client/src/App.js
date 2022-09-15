@@ -39,7 +39,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <Navigation currentUser={currentUser} updateUser={updateUser}/>
+        <Navigation currentUser={currentUser} 
+        updateUser={updateUser}/>
+      </header>
       <Switch>
         <Route exact path="/">
           <Home eventData={eventData}/>
@@ -63,7 +65,6 @@ function App() {
           <EventForm addEvent={addEvent}/>
         </Route>
       </Switch>
-    </header>
     </div>
   );
 }
