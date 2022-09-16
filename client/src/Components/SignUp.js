@@ -80,7 +80,7 @@ function SignUp({updateUser}) {
                             </div>
                         </div>
                             
-                        <button type="submit"  class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg">Sign up!</button>
+                        <button type="submit"  class="block w-full px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg">Sign up!</button>
                     </form>
                 </div>
             </div>

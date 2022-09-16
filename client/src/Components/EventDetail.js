@@ -26,8 +26,10 @@ function EventDetail({currentUser}) {
         })
     }, [params.id])
 
-    if(loading) return <h1>Loading...</h1>
-    if(errors) return <h1>{errors}</h1>
+    if(loading) return <div className="flex items-center justify-center h-screen
+    "><h1 className="text-center text-white text-4xl">Loading...</h1></div>
+    if(errors) return <div className="flex items-center justify-center h-screen
+    "><h1 className="text-center text-white text-4xl ">{errors}! Please Login!</h1></div>
 
     const {id, name, location, date, time, image, price} = event
     const userId = currentUser.id

@@ -9,7 +9,7 @@ function Login({updateUser}) {
         password:''
     })
 
-    const [errors, setErrors] = useState([])
+    const [error, setError] = useState([])
     const history = useHistory()
 
     const {username, password} = formData
@@ -33,7 +33,7 @@ function Login({updateUser}) {
                     history.push(`/me`)
                 })
             }else {
-                res.json().then(json => setErrors(json.errors))
+                res.json().then(json => setError(json.error))
             }
         })
     } 
@@ -66,8 +66,9 @@ function Login({updateUser}) {
                         </div>
                     </div>
                         
-                    <button type="submit"  class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg">Login</button>
+                    <button type="submit"  class="block w-full px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg">Login</button>
                 </form>
+                {error ? <div class="text-white">{error}</div>:null}
             </div>
         </div>
     </section>

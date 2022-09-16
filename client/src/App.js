@@ -6,6 +6,7 @@ import SignUp from "./Components/SignUp";
 import Login from "./Components/Login";
 import UserPage from "./Components/UserPage";
 import Navigation from './Components/Navigation';
+import NotFound from './Components/NotFound';
 import { useState, useEffect } from 'react';
 import EditUserForm from "./Components/EditUserForm";
 import EventForm from "./Components/EventForm"
@@ -37,7 +38,8 @@ function App() {
   if(errors) return <h1>{errors}</h1>
 
   return (
-    <div className="bg-gradient-to-b from-sky-500 to-blue-700 h-full">
+    <div className="bg-gradient-to-b from-sky-500 to-blue-700 bg-scroll bg-contain 
+    overflow-auto m-auto h-screen w-screen">
       <header className="bg-white">
         <Navigation currentUser={currentUser} 
         updateUser={updateUser}/>
