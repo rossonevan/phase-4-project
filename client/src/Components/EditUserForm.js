@@ -77,6 +77,7 @@ function EditUserForm({currentUser, updateUser}) {
                             
                         <button type="submit"  class="block w-full px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg">Edit</button>
                     </form>
+                    {errors? errors.map(error => <div className="text-white"> * {error[1]} </div>) :null}
                 </div>
         </section>
     )
